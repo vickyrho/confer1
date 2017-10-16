@@ -24,7 +24,14 @@ module.exports = function(router){
 
     });
 
-   
+    router.get('/users',function(req,res){
+        User.find(function (err,users) {
+            if(err) res.send(err);
+            res.json(users);
+        })
+    });
+
+
     router.post('/authenticate',function(req,res){
         var str = "user" ;
         User.findOne({ username:req.body.username }).select('name username password email role ').exec(function(err,user){

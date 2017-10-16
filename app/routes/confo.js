@@ -28,7 +28,12 @@ module.exports = function(router){
 
     });
 
-
+    router.get('/conferences',function(req,res){
+        Conference.find(function (err,conferences) {
+            if(err) res.send(err);
+            res.json(conferences);
+        })
+    });
 
     return router ;
 };
