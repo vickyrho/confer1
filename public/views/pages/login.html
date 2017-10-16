@@ -1,0 +1,20 @@
+<div>
+    <div class ="page-header">
+        <h1>User Login</h1>
+    </div>
+    <hr />
+    <form>
+
+
+        <label>Username:</label>
+        <input class="form-control" type="text" placeholder="username" ng-model="logCtrl.logDetails.username" size="10"><br>
+
+        <label>password:</label>
+        <input class="form-control" type="password" placeholder="password" ng-model="logCtrl.logDetails.password" size="10"><br>
+
+
+        <button class ="btn btn-primary" type="submit" ng-click="logCtrl.login(logCtrl.logDetails)">Login</button>
+
+    </form>
+
+</div>
