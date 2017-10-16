@@ -9,8 +9,7 @@ var bodyParser = require('body-parser');
 var router = express.Router();
 var path = require('path');
 var appRoutes = require('./app/routes/api')(router);
-var core = require('cors');
-
+var conRoutes = require('./app/routes/confo')(router);
 
 app.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -18,7 +17,6 @@ app.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Authorization');
     next();
 });
-app.use(core());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // parse application/json
@@ -27,6 +25,7 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 
 app.use('/api',appRoutes);
+app.use('/confo',conRoutes);
 
 mongoose.connect('mongodb://wiki:wiki@ds031892.mlab.com:31892/conference',{ useMongoClient: true });
 

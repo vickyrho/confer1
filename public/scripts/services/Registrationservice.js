@@ -14,6 +14,10 @@ function RegistrationService($http){
     return service ;
 
     function register(params){
-        return $http.post("http://localhost:8000/api/users",params)
+        return $http.post("http://localhost:8000/api/users",params).then(function(data,err){
+            return (data)
+        },function(err){
+            return err;
+        });
     }
 }

@@ -11,7 +11,7 @@ var UserSchema = new Schema({
     username: { type: String, lowercase: true, required: true, index : {unique: true}},
     password: { type: String, required: true },
     email: { type: String, lowercase: true, required: true, index : {unique: true}},
-    role : { type: String, lowercase:true, required:true }
+    role : { type: String, required: true }
 
 });
 

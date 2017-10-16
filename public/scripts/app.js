@@ -44,6 +44,28 @@ var states = [
                 visible:"true"
             }
         }
+    },
+    {
+        name:'conflist',
+        state:{
+            url:'/conflist',
+            templateUrl:'../views/pages/conflist.html',
+            data:{
+                text:"conflist",
+                visible:"true"
+            }
+        }
+    },
+    {
+        name:'AddConference',
+        state:{
+            url:'/AddConference',
+            templateUrl:'../views/pages/AddConference.html',
+            data:{
+                text:"conference",
+                visible:"true"
+            }
+        }
     }
 
 ];

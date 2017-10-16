@@ -24,8 +24,10 @@ module.exports = function(router){
 
     });
 
+   
     router.post('/authenticate',function(req,res){
-        User.findOne({ username:req.body.username }).select('name username password email ').exec(function(err,user){
+        var str = "user" ;
+        User.findOne({ username:req.body.username }).select('name username password email role ').exec(function(err,user){
             if(err) throw err ;
 
             if(!user){
@@ -34,9 +36,12 @@ module.exports = function(router){
                 var isValidPassword = user.comparePassword(req.body.password);
                 if(!isValidPassword){
                     res.json({ success: false , message:'Wrong password'});
-                }else{
-                    res.json({ success: true , message:'User Authenticated'});
+
+                }else if(!Math.abs(str.localeCompare(req.body.role))){
+                    res.json({ success: true , message:'User Authenticated' ,flag:'user'});
                 }
+                else
+                    res.json({ success:true , message:'Admin authenticated' ,flag:'admin'});
             }
         })
     });

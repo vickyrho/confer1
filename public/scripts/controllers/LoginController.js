@@ -13,10 +13,12 @@ function LoginController($scope,$http,$state){
     logCtrl.login = function(logDetails) {
 
 
-
+        var str1 = "user";
+        var str2 = "admin";
         var newData = {
             username : logCtrl.logDetails.username,
-            password : logCtrl.logDetails.password
+            password : logCtrl.logDetails.password,
+            role : logCtrl.logDetails.role
         };
 
         console.log(newData);
@@ -27,21 +29,16 @@ function LoginController($scope,$http,$state){
             console.log(data);
             console.log(data.data.success);
             console.log(data.data.message);
+            console.log(data.data.flag);
 
-            if(data.data.success){
+            if(!Math.abs(str1.localeCompare(data.data.flag))){
                 console.log("user Auth");
-                $state.go('logo',{
-                    url:'/logo',
-                    templateUrl:'../views/logo.html',
-                    data:{
-                        text:"Logo",
-                        visible:"true"
-                    }
-                });
+                $state.go('conflist');
                 //             userLoggedIn = true ;
-            }else
+            }else if(!Math.abs(str2.localeCompare(data.data.flag)))
             {
-                console.log("user Fail");
+                console.log("Admin Auth");
+                $state.go('AddConference');
             }
 
 
